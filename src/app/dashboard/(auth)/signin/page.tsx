@@ -4,7 +4,7 @@ import FormSignIn from "./form";
 import { getUser } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
-export const metaData: Metadata = {
+export const metadata: Metadata = {
   title: "Dashboard | Sign In",
 };
 
