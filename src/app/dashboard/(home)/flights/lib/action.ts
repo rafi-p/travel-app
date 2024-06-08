@@ -6,6 +6,7 @@ import { formFlightSchema } from "./validation";
 import { generateSeatPerClass } from "@/lib/utils";
 import { revalidatePath } from "next/cache";
 import prisma from "../../../../../../lib/prisma";
+import { deleteFile } from "@/lib/supabase";
 
 export async function saveFlight(
   prevState: unknown,
@@ -89,4 +90,23 @@ export async function updateFlight(
 
   revalidatePath("/dashboard/flights");
   redirect("/dashboard/flights");
+}
+
+export async function deleteFlight(id: string) {
+  try {
+    await prisma.flightSeat.deleteMany({
+      where: {
+        flightId: id,
+      },
+    });
+    await prisma.flight.delete({ where: { id: id } });
+  } catch (error) {
+    console.log(error);
+
+    return {
+      errorTitle: "Failed to delete data",
+      errorDesc: ["Terjadi pada masalah koneksi, silahkan coba lagi."],
+    };
+  }
+  revalidatePath("/dashboard/flights");
 }
