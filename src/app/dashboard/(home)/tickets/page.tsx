@@ -1,7 +1,4 @@
-import { Button } from "@/components/ui/button";
 import { DataTable } from "@/components/ui/data-table";
-import { Plus } from "lucide-react";
-import Link from "next/link";
 import React from "react";
 import type { Metadata } from "next";
 import { columns } from "./components/column-ticket";
