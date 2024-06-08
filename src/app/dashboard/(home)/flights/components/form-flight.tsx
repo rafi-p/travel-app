@@ -11,13 +11,16 @@ import {
 } from "@/components/ui/select";
 import React from "react";
 import SubmitButtonForm from "../../components/submit-form-button";
-import type { Airplane } from "@prisma/client";
+import type { Airplane, Flight } from "@prisma/client";
 import { useFormState } from "react-dom";
-import { saveFlight } from "../lib/action";
+import { saveFlight, updateFlight } from "../lib/action";
 import type { ActionResult } from "@/app/dashboard/(auth)/signin/form/actions";
+import { dateFormat } from "@/lib/utils";
 
 interface FormFlightProps {
   airplanes: Airplane[];
+  type?: "ADD" | "EDIT";
+  defaultValues?: Flight | null;
 }
 
 const initialFormState: ActionResult = {
@@ -25,8 +28,17 @@ const initialFormState: ActionResult = {
   errorDesc: [],
 };
 
-export default function FormFlight({ airplanes }: FormFlightProps) {
-  const [state, formAction] = useFormState(saveFlight, initialFormState);
+export default function FormFlight({
+  airplanes,
+  type,
+  defaultValues,
+}: FormFlightProps) {
+  const updateFlightWithId = (_state: ActionResult, formData: FormData) =>
+    updateFlight(null, defaultValues?.id!!, formData);
+  const [state, formAction] = useFormState(
+    type === "ADD" ? saveFlight : updateFlightWithId,
+    initialFormState
+  );
 
   return (
     <form action={formAction} className="space-y-6">
@@ -43,7 +55,7 @@ export default function FormFlight({ airplanes }: FormFlightProps) {
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="planeId">Pilih Pesawat</Label>
-          <Select name="planeId">
+          <Select name="planeId" defaultValue={defaultValues?.planeId}>
             <SelectTrigger id="planeId">
               <SelectValue placeholder="Pilih pesawat" />
             </SelectTrigger>
@@ -65,6 +77,7 @@ export default function FormFlight({ airplanes }: FormFlightProps) {
             type="number"
             min={0}
             required
+            defaultValue={defaultValues?.price}
           />
           <span className="text-xs text-gray-900">
             Harga untuk kelas business bertambah Rp 500.000 & kelas first
@@ -80,6 +93,7 @@ export default function FormFlight({ airplanes }: FormFlightProps) {
             name="departureCity"
             id="departureCity"
             required
+            defaultValue={defaultValues?.departureCity}
           />
         </div>
         <div className="space-y-2 ">
@@ -91,6 +105,10 @@ export default function FormFlight({ airplanes }: FormFlightProps) {
             id="departureDate"
             className="block"
             required
+            defaultValue={dateFormat(
+              defaultValues?.departureDate,
+              "YYYY-MM-DDTHH:MM"
+            )}
           />
         </div>
         <div className="space-y-2 ">
@@ -100,6 +118,7 @@ export default function FormFlight({ airplanes }: FormFlightProps) {
             name="departureCityCode"
             id="departureCityCode"
             required
+            defaultValue={defaultValues?.departureCityCode}
           />
         </div>
       </div>
@@ -111,6 +130,7 @@ export default function FormFlight({ airplanes }: FormFlightProps) {
             name="destinationCity"
             id="destinationCity"
             required
+            defaultValue={defaultValues?.destinationCity}
           />
         </div>
         <div className="space-y-2 ">
@@ -122,6 +142,10 @@ export default function FormFlight({ airplanes }: FormFlightProps) {
             id="arrivalDate"
             className="block"
             required
+            defaultValue={dateFormat(
+              defaultValues?.arrivalDate,
+              "YYYY-MM-DDTHH:MM"
+            )}
           />
         </div>
         <div className="space-y-2 ">
@@ -131,6 +155,7 @@ export default function FormFlight({ airplanes }: FormFlightProps) {
             name="destinationCityCode"
             id="destinationCityCode"
             required
+            defaultValue={defaultValues?.destinationCityCode}
           />
         </div>
       </div>
