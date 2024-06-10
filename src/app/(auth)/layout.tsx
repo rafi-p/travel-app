@@ -1,11 +1,12 @@
 import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "../../globals.css";
+import "../globals.css";
 import Link from "next/link";
 import Image from "next/image";
-import Navbar from "../components/Navbar";
+
 import CompanyLogos from "../components/company-logos";
+import Navbar from "../components/navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`text-white font-poppins bg-flysha-black ${inter.className}`}
-      >
+      <body className={`text-white bg-flysha-black ${inter.className}`}>
         <section
           id="Signup"
           className="bg-[url('/assets/images/background/airplane.png')] bg-no-repeat bg-cover bg-left-top -z-10 min-h-screen"

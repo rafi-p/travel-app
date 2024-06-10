@@ -5,7 +5,6 @@ import Link from "next/link";
 import type { ActionResult } from "@/app/dashboard/(auth)/signin/form/actions";
 import { useFormState, useFormStatus } from "react-dom";
 import { signUpUser } from "../lib/action";
-import { Button } from "@/components/ui/button";
 
 const initialState: ActionResult = {
   errorTitle: "",
@@ -16,15 +15,13 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <form>
-      <button
-        disabled={pending}
-        type="submit"
-        className="text-center text-flysha-black rounded-full bg-flysha-light-purple font-bold w-full p-[12px_30px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#B88DFF] disabled:opacity-40"
-      >
-        Create New Account
-      </button>
-    </form>
+    <button
+      disabled={pending}
+      type="submit"
+      className="text-center text-flysha-black rounded-full bg-flysha-light-purple font-bold w-full p-[12px_30px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#B88DFF] disabled:opacity-40"
+    >
+      Create New Account
+    </button>
   );
 }
 
@@ -98,7 +95,7 @@ export default function FormSignUp() {
       </div>
       <SubmitButton />
       <Link
-        href="signin.html"
+        href="/sign-in"
         className="text-center text-flysha-black hover:text-white rounded-full bg-white hover:bg-flysha-black font-semibold w-full p-[12px_30px] border border-flysha-black transition-all duration-300"
       >
         Sign In
