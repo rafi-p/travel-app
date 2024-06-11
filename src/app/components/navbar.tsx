@@ -8,7 +8,7 @@ export default function Navbar() {
       id="Navbar"
       className="container max-w-[1130px] mx-auto flex justify-between items-center pt-[30px]"
     >
-      <Link href="index.html" className="flex items-center shrink-0">
+      <Link href="/" className="flex items-center shrink-0">
         <Image
           width={120}
           height={60}
@@ -43,7 +43,7 @@ export default function Navbar() {
           </Link>
         </li>
         <Link
-          href="signin.html"
+          href="/sign-in"
           className="font-bold text-flysha-black bg-flysha-light-purple rounded-full p-[12px_30px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#B88DFF]"
         >
           Sign In

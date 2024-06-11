@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function CompanyLogos() {
   return (
-    <div className="company-logos w-full flex items-center py-[50px] bottom-0 overflow-hidden">
+    <div className="company-logos w-full flex items-center py-[50px] bottom-0 overflow-hidden ">
       <div className="slider flex shrink-0 w-max">
         <div className="animate-[slide_10s_linear_infinite] flex gap-[50px] pl-[50px] items-center">
           <div className="flex w-fit h-[30px] shrink-0">
