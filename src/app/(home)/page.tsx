@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getCityFilter } from "./lib/data";
 import Navbar from "../components/navbar";
 import CompanyLogos from "../components/company-logos";
+import { searchFlight } from "./lib/action";
 
 export default async function Home() {
   const filter = await getCityFilter();
@@ -27,7 +28,10 @@ export default async function Home() {
                 Crafted by best talented people around the world.
               </p>
             </div>
-            <form className="bg-white text-flysha-black w-full flex justify-between items-center rounded-[20px] p-5">
+            <form
+              action={searchFlight}
+              className="bg-white text-flysha-black w-full flex justify-between items-center rounded-[20px] p-5"
+            >
               <div className="flex gap-[50px] items-center p-5">
                 <div className="flex flex-col justify-center gap-[14px]">
                   <label htmlFor="departure" className="text-lg">
@@ -117,12 +121,12 @@ export default async function Home() {
                   </div>
                 </div>
               </div>
-              <Link
-                href="/sign-up"
+              <button
+                type="submit"
                 className="font-bold text-2xl leading-9 text-flysha-black text-center bg-flysha-light-purple rounded-[18px] p-[12px_30px] flex shrink-0 items-center h-[108px]  transition-all duration-300 hover:shadow-[0_10px_20px_0_#B88DFF]"
               >
                 Explore Now
-              </Link>
+              </button>
             </form>
           </div>
           <CompanyLogos />
