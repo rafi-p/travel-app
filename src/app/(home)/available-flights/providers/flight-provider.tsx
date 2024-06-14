@@ -19,6 +19,7 @@ interface FlightProviderProps {
 export enum FilterActionKind {
   ADD_PLANE = "ADD_PLANE",
   REMOVE_PLANE = "REMOVE_PLANE",
+  SET_SEAT = "SET_SEAT",
 }
 
 type FilterState = {
@@ -49,7 +50,11 @@ function filterReducer(state: FilterState, action: FilterAction): FilterState {
         ...state,
         planeIds: state.planeIds.filter((item) => item !== payload.planeId),
       };
-
+    case FilterActionKind.SET_SEAT:
+      return {
+        ...state,
+        seat: payload.seat,
+      };
     default:
       return state;
   }
@@ -63,6 +68,7 @@ export type FContext = {
   flights: FlightWithPlane[] | undefined;
   isLoading: boolean;
   dispatch: Dispatch<FilterAction>;
+  state: FilterState;
 };
 
 export const FlightContext = createContext<FContext | null>(null);
@@ -92,7 +98,9 @@ const FlightProvider: FC<FlightProviderProps> = ({ children }) => {
   });
 
   return (
-    <FlightContext.Provider value={{ flights: data, isLoading, dispatch }}>
+    <FlightContext.Provider
+      value={{ flights: data, isLoading, dispatch, state }}
+    >
       {children}
     </FlightContext.Provider>
   );

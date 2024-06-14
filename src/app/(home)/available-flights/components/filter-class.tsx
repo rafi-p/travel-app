@@ -1,9 +1,30 @@
+"use client";
+
 import type { TypeSeat } from "@prisma/client";
-import React from "react";
+import React, { type ChangeEvent, useContext } from "react";
+import {
+  type FContext,
+  FlightContext,
+  FilterActionKind,
+} from "../providers/flight-provider";
 
 const SEAT_OPTIONS: TypeSeat[] = ["ECONOMY", "BUSINESS", "FIRST"];
 
 export default function FilterClass() {
+  const { dispatch } = useContext(FlightContext) as FContext;
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+
+    dispatch({
+      type: FilterActionKind.SET_SEAT,
+      payload: {
+        planeId: "",
+        seat: value,
+      },
+    });
+  };
+
   return (
     <div className="flex flex-col gap-4">
       <p className="font-semibold">Seat Class</p>
@@ -18,6 +39,7 @@ export default function FilterClass() {
             name="seat"
             value={val}
             id={val}
+            onChange={handleChange}
             className="w-[18px] h-[18px] appearance-none checked:border-[3px] checked:border-solid checked:border-flysha-black rounded-full checked:bg-flysha-light-purple ring-2 ring-flysha-off-purple checked:ring-white"
           />
           {val}
