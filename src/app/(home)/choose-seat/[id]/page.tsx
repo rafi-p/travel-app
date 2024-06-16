@@ -1,8 +1,19 @@
 import React from "react";
 import SeatList from "./components/seat-list";
 import FlightDetail from "./components/flight-detail";
+import { getFlightById } from "../../lib/data";
+import { getUser } from "@/lib/auth";
 
-export default function ChooseSeatPage() {
+type Params = {
+  id: string;
+};
+interface ChooseSeatProps {
+  params: Params;
+}
+
+export default async function ChooseSeatPage({ params }: ChooseSeatProps) {
+  const { session } = await getUser();
+  const flight = await getFlightById(params.id);
   return (
     <section
       id="Chosse-Seat"
@@ -44,11 +55,11 @@ export default function ChooseSeatPage() {
                 <span className="font-semibold">Available</span>
               </div>
             </div>
-            <SeatList />
+            {flight?.seats && <SeatList seats={flight?.seats} />}
           </div>
         </div>
       </div>
-      <FlightDetail />
+      {flight && <FlightDetail flight={flight} session={session} />}
     </section>
   );
 }
