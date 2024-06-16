@@ -5,8 +5,13 @@ import Image from "next/image";
 import useCheckoutData from "@/app/hooks/useCheckoutData";
 import { getUrlFile } from "@/lib/supabase";
 import { SEAT_VALUES, SeatValuesType, dateFormat } from "@/lib/utils";
+import type { User } from "lucia";
 
-export default function FlightCard() {
+interface FlightCardProps {
+  user: User | null;
+}
+
+export default function FlightCard({ user }: FlightCardProps) {
   const { data } = useCheckoutData();
 
   const selectedSeat = useMemo(() => {
@@ -86,7 +91,7 @@ export default function FlightCard() {
           <span>Date</span>
           <span className="font-semibold">
             {data?.flightDetail?.departureDate
-              ? dateFormat(data.flightDetail.departureDate)
+              ? dateFormat(data.flightDetail.departureDate, "DD MMM YYYY")
               : ""}
           </span>
         </div>
@@ -111,7 +116,7 @@ export default function FlightCard() {
         </div>
         <div className="flex justify-between text-flysha-black">
           <span>Name</span>
-          <span className="font-semibold">Angga Risky</span>
+          <span className="font-semibold">{user?.name}</span>
         </div>
         <div className="flex justify-between text-flysha-black">
           <span>Seat Choosen</span>
@@ -119,7 +124,7 @@ export default function FlightCard() {
         </div>
         <div className="flex justify-between text-flysha-black">
           <span>Passport No.</span>
-          <span className="font-semibold">AB2091MB</span>
+          <span className="font-semibold">{user?.passport}</span>
         </div>
         <div className="flex justify-between text-flysha-black">
           <span>Passenger</span>
