@@ -1,6 +1,6 @@
 "use client";
 
-import useCheckoutData from "@/app/hooks/useCheckoutData";
+import useCheckoutData from "@/hooks/useCheckoutData";
 import { getUrlFile } from "@/lib/supabase";
 import {
   type Checkout,

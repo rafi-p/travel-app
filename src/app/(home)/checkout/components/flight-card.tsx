@@ -2,7 +2,7 @@
 
 import React, { useMemo } from "react";
 import Image from "next/image";
-import useCheckoutData from "@/app/hooks/useCheckoutData";
+import useCheckoutData from "@/hooks/useCheckoutData";
 import { getUrlFile } from "@/lib/supabase";
 import { SEAT_VALUES, SeatValuesType, dateFormat } from "@/lib/utils";
 import type { User } from "lucia";

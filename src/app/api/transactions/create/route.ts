@@ -6,6 +6,7 @@ export async function POST(request: NextRequest) {
   const body = await request.json();
 
   try {
+    console.log(body);
     const transactions = await prisma.ticket.create({
       data: {
         bookingDate: body.bookingDate,
@@ -28,7 +29,6 @@ export async function POST(request: NextRequest) {
     });
 
     // handle midtrans
-
     return Response.json({ transaction_id: transactions.id });
   } catch (error) {
     console.log(error);
