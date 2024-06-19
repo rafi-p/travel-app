@@ -2,11 +2,13 @@ import type { NextRequest } from "next/server";
 import prisma from "../../../../../lib/prisma";
 import { makeid } from "@/lib/utils";
 
+const MIDTRANS_URL = process.env.NEXT_PUBLIC_TRANSACTION_URL ?? "";
+const MIDTRANS_AUTH_KEY = process.env.NEXT_PUBLIC_MIDTRANS_AUTH_KEY ?? "";
+
 export async function POST(request: NextRequest) {
   const body = await request.json();
 
   try {
-    console.log(body);
     const transactions = await prisma.ticket.create({
       data: {
         bookingDate: body.bookingDate,
@@ -29,7 +31,46 @@ export async function POST(request: NextRequest) {
     });
 
     // handle midtrans
-    return Response.json({ transaction_id: transactions.id });
+    let parameter = {
+      transaction_details: {
+        order_id: transactions.id,
+        gross_amount: body.price,
+      },
+      credit_card: {
+        secure: true,
+      },
+      item_details: [
+        {
+          id: body.flightId,
+          price: body.price,
+          quantity: 1,
+          name: `Tiket Pesawat ${body.departureCityCode} - ${body.destinationCityCode}`,
+        },
+      ],
+    };
+
+    const resMidtrans = await fetch(MIDTRANS_URL, {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
+        authorization: `Basic ${MIDTRANS_AUTH_KEY}`,
+      },
+      body: JSON.stringify(parameter),
+    });
+
+    const midtrans = await resMidtrans.json();
+
+    await prisma.ticket.update({
+      where: {
+        id: transactions.id,
+      },
+      data: {
+        tokenMidtrans: midtrans.token,
+      },
+    });
+
+    return Response.json({ midtrans, transaction_id: transactions.id });
   } catch (error) {
     console.log(error);
     return Response.json({ error }, { status: 500 });

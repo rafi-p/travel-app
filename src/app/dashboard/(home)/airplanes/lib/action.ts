@@ -73,7 +73,6 @@ export async function updateAirplane(
   formData: FormData
 ): Promise<ActionResult> {
   const image = formData.get("image") as File;
-  console.log("masuk");
 
   let airplaneFormSchemaUpdate;
 

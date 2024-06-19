@@ -14,8 +14,6 @@ async function main() {
       password,
     },
   });
-
-  console.log(userSeed);
 }
 
 main()

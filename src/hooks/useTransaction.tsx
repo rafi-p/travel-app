@@ -5,6 +5,7 @@ import { SEAT_VALUES, type SeatValuesType } from "@/lib/utils";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { set } from "zod";
+import { useRouter } from "next/navigation";
 
 type Props = {
   user: User | null;
@@ -14,6 +15,7 @@ const useTransaction = ({ user }: Props) => {
   const { data } = useCheckoutData();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const router = useRouter();
 
   const selectedSeat = useMemo(() => {
     return SEAT_VALUES[(data?.seat as SeatValuesType) ?? "ECONOMY"];
@@ -48,6 +50,23 @@ const useTransaction = ({ user }: Props) => {
       const transaction = await transactionMutate.mutateAsync(bodyData);
 
       //handle midtrans
+      window.snap.pay(transaction.midtrans.token, {
+        onSuccess: (result: any) => {
+          console.log(result);
+          router.push("/success-checkout");
+        },
+        onPending: (result: any) => {
+          console.log(result);
+          router.push("/success-checkout");
+        },
+        onError: (result: any) => {
+          console.log(result);
+          alert("Transaksi gagal silahkan coba lagi");
+        },
+        onClose: (result: any) => {
+          alert("Transaksi gagal silahkan coba lagi");
+        },
+      });
 
       setIsLoading(false);
     } catch (error) {
