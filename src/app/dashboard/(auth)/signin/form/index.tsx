@@ -26,7 +26,6 @@ const SubmitButton = ({}) => {
 const FormSignIn: FC<FormSignInProps> = ({}) => {
   const [state, formAction] = useFormState(handleSignIn, initialFormState);
 
-  console.log(state);
   return (
     <div className="w-full h-screen">
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
