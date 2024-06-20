@@ -54,9 +54,15 @@ export async function saveFlight(
 
 export async function updateFlight(
   prevState: unknown,
-  id: string,
+  id: string | null,
   formData: FormData
 ): Promise<ActionResult> {
+  if (!id) {
+    return {
+      errorTitle: "Params ID missing",
+      errorDesc: [],
+    };
+  }
   const departureDate = new Date(formData.get("departureDate") as string);
   const arrivalDate = new Date(formData.get("arrivalDate") as string);
 

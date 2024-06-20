@@ -136,7 +136,9 @@ export async function updateAirplane(
   redirect("/dashboard/airplanes");
 }
 
-export async function deleteAirplane(id: string): Promise<ActionResult | null> {
+export async function deleteAirplane(
+  id: string
+): Promise<ActionResult | undefined> {
   const data = await prisma.airplane.findFirst({
     where: {
       id: id,
