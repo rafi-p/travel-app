@@ -52,15 +52,15 @@ const useTransaction = ({ user }: Props) => {
       //handle midtrans
       window.snap.pay(transaction.midtrans.token, {
         onSuccess: (result: any) => {
-          console.log(result);
+          // console.log(result);
           router.push("/success-checkout");
         },
         onPending: (result: any) => {
-          console.log(result);
+          // console.log(result);
           router.push("/success-checkout");
         },
         onError: (result: any) => {
-          console.log(result);
+          // console.log(result);
           alert("Transaksi gagal silahkan coba lagi");
         },
         onClose: (result: any) => {
