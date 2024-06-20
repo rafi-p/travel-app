@@ -2,8 +2,6 @@ import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
-import Link from "next/link";
-import Image from "next/image";
 
 import CompanyLogos from "../components/company-logos";
 import Navbar from "../components/navbar";

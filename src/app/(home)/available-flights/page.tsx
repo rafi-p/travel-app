@@ -1,6 +1,4 @@
 import Navbar from "@/app/components/navbar";
-import Image from "next/image";
-import Link from "next/link";
 import React, { Suspense } from "react";
 import FilterClass from "./components/filter-class";
 import FilterFlight from "./components/filter-flight";

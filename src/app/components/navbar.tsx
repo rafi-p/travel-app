@@ -2,12 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import NavbarAuth from "./navbar-auth";
+import BurgerMenu from "./burger-menu";
 
 export default function Navbar() {
   return (
     <nav
       id="Navbar"
-      className="container max-w-[1130px] mx-auto flex justify-between items-center pt-[30px]"
+      className="container max-w-[1130px] mx-auto flex flex-row justify-between items-center pt-[30px]"
     >
       <Link href="/" className="flex items-center shrink-0">
         <Image
@@ -17,7 +18,7 @@ export default function Navbar() {
           alt="logo"
         />
       </Link>
-      <ul className="nav-menus flex gap-[30px] items-center w-fit">
+      {/* <ul className="nav-menus flex flex-col md:flex-row gap-[30px] items-center w-fit">
         <li>
           <Link href="" className="font-medium">
             Flash Sale
@@ -44,7 +45,10 @@ export default function Navbar() {
           </Link>
         </li>
         <NavbarAuth />
-      </ul>
+      </ul> */}
+      <BurgerMenu>
+        <NavbarAuth />
+      </BurgerMenu>
     </nav>
   );
 }

@@ -30,9 +30,9 @@ export default async function Home() {
             </div>
             <form
               action={searchFlight}
-              className="bg-white text-flysha-black w-full flex justify-between items-center rounded-[20px] p-5"
+              className="bg-white text-flysha-black w-full flex flex-col md:flex-row justify-between items-center rounded-[20px] p-5"
             >
-              <div className="flex gap-[50px] items-center p-5">
+              <div className="flex flex-col md:flex-row w-full gap-[30px] md:gap-[50px] items-center p-5">
                 <div className="flex flex-col justify-center gap-[14px]">
                   <label htmlFor="departure" className="text-lg">
                     Departure
@@ -65,7 +65,7 @@ export default async function Home() {
                     </select>
                   </div>
                 </div>
-                <hr className="border border-[#EDE8F5] h-[60px]" />
+                <hr className="border border-[#EDE8F5] w-full md:w-0 md:h-[60px]" />
                 <div className="flex flex-col justify-center gap-[14px]">
                   <label htmlFor="arrival" className="text-lg">
                     Arrival
@@ -98,7 +98,7 @@ export default async function Home() {
                     </select>
                   </div>
                 </div>
-                <div className="border border-[#EDE8F5] h-[60px]" />
+                <div className="border border-[#EDE8F5]  w-full md:w-0 md:h-[60px]" />
                 <div className="flex flex-col justify-center gap-[14px]">
                   <label htmlFor="date" className="text-lg">
                     Departure Date
@@ -123,7 +123,7 @@ export default async function Home() {
               </div>
               <button
                 type="submit"
-                className="font-bold text-2xl leading-9 text-flysha-black text-center bg-flysha-light-purple rounded-[18px] p-[12px_30px] flex shrink-0 items-center h-[108px]  transition-all duration-300 hover:shadow-[0_10px_20px_0_#B88DFF]"
+                className="font-bold text-2xl leading-9 text-flysha-black text-center bg-flysha-light-purple rounded-[18px] p-[12px_30px] flex shrink-0 items-center h-[80px] md:h-[108px]  transition-all duration-300 hover:shadow-[0_10px_20px_0_#B88DFF]"
               >
                 Explore Now
               </button>
@@ -140,8 +140,8 @@ export default async function Home() {
           We Ensure You <br />
           Fly With Us Forever
         </h2>
-        <div className="flex justify-between">
-          <div className="flex flex-col gap-[30px] w-[220px]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-[30px]">
+          <div className="flex flex-col gap-[30px]">
             <div className="flex shrink-0 w-[70px] h-[70px] rounded-full items-center justify-center bg-flysha-light-purple">
               <Image
                 width={35}
@@ -157,7 +157,7 @@ export default async function Home() {
               </p>
             </div>
           </div>
-          <div className="flex flex-col gap-[30px] w-[220px]">
+          <div className="flex flex-col gap-[30px]">
             <div className="flex shrink-0 w-[70px] h-[70px] rounded-full items-center justify-center bg-flysha-light-purple">
               <Image
                 width={35}
@@ -173,7 +173,7 @@ export default async function Home() {
               </p>
             </div>
           </div>
-          <div className="flex flex-col gap-[30px] w-[220px]">
+          <div className="flex flex-col gap-[30px]">
             <div className="flex shrink-0 w-[70px] h-[70px] rounded-full items-center justify-center bg-flysha-light-purple">
               <Image
                 width={35}
@@ -189,7 +189,7 @@ export default async function Home() {
               </p>
             </div>
           </div>
-          <div className="flex flex-col gap-[30px] w-[220px]">
+          <div className="flex flex-col gap-[30px]">
             <div className="flex shrink-0 w-[70px] h-[70px] rounded-full items-center justify-center bg-flysha-light-purple">
               <Image
                 width={35}
@@ -218,7 +218,7 @@ export default async function Home() {
           <h2 className="font-bold text-[32px] leading-[48px] text-center">
             Best Selective
           </h2>
-          <div className="flex gap-[10px]">
+          <div className="gap-[10px] hidden md:flex">
             <button className="flex shrink-0 w-10 h-10 items-center justify-center bg-white rounded-full">
               <Image
                 width={25}
@@ -238,108 +238,110 @@ export default async function Home() {
             </button>
           </div>
         </div>
-        <div className="grid grid-cols-4 gap-[30px]">
-          <div className="flex flex-col gap-5">
-            <div className="rounded-[30px] h-[310px] overflow-hidden">
-              <Image
-                width={40}
-                height={40}
-                src="/assets/images/thumbnail/thumbnail1.png"
-                className="w-full h-[310px] object-cover"
-                alt="thumbnail"
-              />
-            </div>
-            <div className="flex gap-[14px] items-center">
-              <div className="flex shrink-0 w-8 h-8">
+        <div className="flex overflow-x-auto snap-x snap-mandatory">
+          <div className="grid grid-cols-4x300 md:grid-cols-4 w-max md:w-auto gap-[30px]">
+            <div className="flex flex-col gap-5 snap-start">
+              <div className="rounded-[30px] h-[310px] overflow-hidden">
                 <Image
                   width={40}
                   height={40}
-                  src="/assets/images/icons/crown-white.svg"
-                  className="w-8 h-8"
-                  alt="icon"
+                  src="/assets/images/thumbnail/thumbnail1.png"
+                  className="w-full h-[310px] object-cover"
+                  alt="thumbnail"
                 />
               </div>
-              <div className="flex flex-col gap-[2px]">
-                <p className="font-bold text-lg">First Lounge</p>
-                <p className="text-flysha-off-purple">Manhanggattan</p>
+              <div className="flex gap-[14px] items-center">
+                <div className="flex shrink-0 w-8 h-8">
+                  <Image
+                    width={40}
+                    height={40}
+                    src="/assets/images/icons/crown-white.svg"
+                    className="w-8 h-8"
+                    alt="icon"
+                  />
+                </div>
+                <div className="flex flex-col gap-[2px]">
+                  <p className="font-bold text-lg">First Lounge</p>
+                  <p className="text-flysha-off-purple">Manhanggattan</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="flex flex-col gap-5">
-            <div className="rounded-[30px] h-[310px] overflow-hidden">
-              <Image
-                width={40}
-                height={40}
-                src="/assets/images/thumbnail/thumbnail2.png"
-                className="w-full h-[310px] object-cover"
-                alt="thumbnail"
-              />
-            </div>
-            <div className="flex gap-[14px] items-center">
-              <div className="flex shrink-0 w-8 h-8">
+            <div className="flex flex-col gap-5 snap-start">
+              <div className="rounded-[30px] h-[310px] overflow-hidden">
                 <Image
                   width={40}
                   height={40}
-                  src="/assets/images/icons/crown-white.svg"
-                  className="w-8 h-8"
-                  alt="icon"
+                  src="/assets/images/thumbnail/thumbnail2.png"
+                  className="w-full h-[310px] object-cover"
+                  alt="thumbnail"
                 />
               </div>
-              <div className="flex flex-col gap-[2px]">
-                <p className="font-bold text-lg">Business First</p>
-                <p className="text-flysha-off-purple">Gulfstream 109-BB</p>
+              <div className="flex gap-[14px] items-center">
+                <div className="flex shrink-0 w-8 h-8">
+                  <Image
+                    width={40}
+                    height={40}
+                    src="/assets/images/icons/crown-white.svg"
+                    className="w-8 h-8"
+                    alt="icon"
+                  />
+                </div>
+                <div className="flex flex-col gap-[2px]">
+                  <p className="font-bold text-lg">Business First</p>
+                  <p className="text-flysha-off-purple">Gulfstream 109-BB</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="flex flex-col gap-5">
-            <div className="rounded-[30px] h-[310px] overflow-hidden">
-              <Image
-                width={40}
-                height={40}
-                src="/assets/images/thumbnail/thumbnail3.png"
-                className="w-full h-[310px] object-cover"
-                alt="thumbnail"
-              />
-            </div>
-            <div className="flex gap-[14px] items-center">
-              <div className="flex shrink-0 w-8 h-8">
+            <div className="flex flex-col gap-5 snap-start">
+              <div className="rounded-[30px] h-[310px] overflow-hidden">
                 <Image
                   width={40}
                   height={40}
-                  src="/assets/images/icons/crown-white.svg"
-                  className="w-8 h-8"
-                  alt="icon"
+                  src="/assets/images/thumbnail/thumbnail3.png"
+                  className="w-full h-[310px] object-cover"
+                  alt="thumbnail"
                 />
               </div>
-              <div className="flex flex-col gap-[2px]">
-                <p className="font-bold text-lg">Pickup at Home</p>
-                <p className="text-flysha-off-purple">Bentley Banta</p>
+              <div className="flex gap-[14px] items-center">
+                <div className="flex shrink-0 w-8 h-8">
+                  <Image
+                    width={40}
+                    height={40}
+                    src="/assets/images/icons/crown-white.svg"
+                    className="w-8 h-8"
+                    alt="icon"
+                  />
+                </div>
+                <div className="flex flex-col gap-[2px]">
+                  <p className="font-bold text-lg">Pickup at Home</p>
+                  <p className="text-flysha-off-purple">Bentley Banta</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="flex flex-col gap-5">
-            <div className="rounded-[30px] h-[310px] overflow-hidden">
-              <Image
-                width={40}
-                height={40}
-                src="/assets/images/thumbnail/thumbnail4.png"
-                className="w-full h-[310px] object-cover"
-                alt="thumbnail"
-              />
-            </div>
-            <div className="flex gap-[14px] items-center">
-              <div className="flex shrink-0 w-8 h-8">
+            <div className="flex flex-col gap-5 snap-start">
+              <div className="rounded-[30px] h-[310px] overflow-hidden">
                 <Image
                   width={40}
                   height={40}
-                  src="/assets/images/icons/crown-white.svg"
-                  className="w-8 h-8"
-                  alt="icon"
+                  src="/assets/images/thumbnail/thumbnail4.png"
+                  className="w-full h-[310px] object-cover"
+                  alt="thumbnail"
                 />
               </div>
-              <div className="flex flex-col gap-[2px]">
-                <p className="font-bold text-lg">Fly Roam</p>
-                <p className="text-flysha-off-purple">Capung A19-22</p>
+              <div className="flex gap-[14px] items-center">
+                <div className="flex shrink-0 w-8 h-8">
+                  <Image
+                    width={40}
+                    height={40}
+                    src="/assets/images/icons/crown-white.svg"
+                    className="w-8 h-8"
+                    alt="icon"
+                  />
+                </div>
+                <div className="flex flex-col gap-[2px]">
+                  <p className="font-bold text-lg">Fly Roam</p>
+                  <p className="text-flysha-off-purple">Capung A19-22</p>
+                </div>
               </div>
             </div>
           </div>
@@ -1091,7 +1093,7 @@ export default async function Home() {
       </section>
 
       <footer className="flex flex-col justify-between mt-[150px] border-t-[6px] border-flysha-light-purple p-[100px_10px_30px]">
-        <div className="container max-w-[1130px] mx-auto flex justify-between relative">
+        <div className="container max-w-[1130px] mx-auto flex flex-col md:flex-row justify-between relative">
           <Image
             width={300}
             height={300}
@@ -1099,7 +1101,7 @@ export default async function Home() {
             className="absolute h-[300px] -top-[45px] -left-[20px] z-0"
             alt="icon"
           />
-          <div className="flex shrink-0 h-fit z-10">
+          <div className="flex shrink-0 h-fit z-10 mb-10 md:mb-0">
             <Image
               width={150}
               height={70}
@@ -1107,7 +1109,7 @@ export default async function Home() {
               alt=""
             />
           </div>
-          <div className="flex gap-[100px] z-10">
+          <div className="flex flex-col md:flex-row gap-[100px] z-10">
             <div className="flex flex-col gap-5">
               <p className="font-bold text-lg">Explore</p>
               <Link
