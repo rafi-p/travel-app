@@ -34,7 +34,7 @@ export default async function DetailTicketPage({ params }: DetailTicketProps) {
                 {data?.flight.departureCity} to {data?.flight.destinationCity}
               </h1>
               <p className="font-medium text-lg leading-[27px]">
-                {data && dateFormat(data.flight.departureDate, "DD MMM YYYY")}
+                {data && dateFormat(data.bookingDate, "DD MMM YYYY")}
               </p>
             </div>
           </div>
