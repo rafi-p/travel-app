@@ -5,6 +5,11 @@ import FilterFlight from "./components/filter-flight";
 import FilterAirline from "./components/filter-airline";
 import ListFlights from "./components/list-flights";
 import LoadingFilterAirline from "./components/loading-filter-airline";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 export default function AvailableFlightsPage() {
   return (
@@ -30,10 +35,10 @@ export default function AvailableFlightsPage() {
         id="Content"
         className="container max-w-[1130px] mx-auto -mt-[33px] z-10 relative pb-[105px]"
       >
-        <div className="flex w-full">
-          <form className="ticket-filter flex flex-col shrink-0 w-[230px] gap-[30px] text-flysha-off-purple">
+        <div className="flex flex-col md:flex-row w-full">
+          <form className="ticket-filter flex flex-row md:flex-col shrink-0 w-[230px] gap-[30px] text-flysha-off-purple  mb-5 md:mb-0">
             <FilterClass />
-            <FilterFlight />
+            {/* <FilterFlight /> */}
             <Suspense fallback={<LoadingFilterAirline />}>
               <FilterAirline />
             </Suspense>

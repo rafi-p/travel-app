@@ -31,7 +31,7 @@ export const CheckboxAirline: FC<CheckboxAirlineProps> = ({ val }) => {
   return (
     <label
       htmlFor={val.name}
-      className="font-semibold flex items-center gap-[10px] text-white"
+      className="font-semibold flex items-center text-xs md:text-base gap-[10px] text-white"
     >
       <input
         type="checkbox"
