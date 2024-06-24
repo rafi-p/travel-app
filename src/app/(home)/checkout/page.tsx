@@ -31,7 +31,7 @@ export default async function CheckoutPage({}: CheckoutPageProps) {
         id="Content"
         className="container max-w-[1130px] mx-auto -mt-[33px] z-10 relative"
       >
-        <div className="checkout-container flex flex-col lg:flex-row gap-[70px]">
+        <div className="checkout-container flex flex-col lg:flex-row gap-4 md:gap-[70px]">
           <FlightCard user={user} />
           <div className="flex flex-col mt-[63px] gap-[30px]">
             <Benefits />

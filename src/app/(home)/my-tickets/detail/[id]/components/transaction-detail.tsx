@@ -22,7 +22,7 @@ interface TransactionDetailProps {
 
 export default function TransactionDetail({ data }: TransactionDetailProps) {
   return (
-    <div className="flex flex-col gap-[30px] w-[400px]">
+    <div className="flex flex-col gap-[30px] w-full md:w-[400px] mb-5 md:mb-0">
       <div className="flex flex-col gap-[18px]">
         <p className="font-semibold">Payment Details</p>
         <div className="flex justify-between">

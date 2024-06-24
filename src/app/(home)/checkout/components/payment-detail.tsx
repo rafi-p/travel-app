@@ -20,7 +20,7 @@ export default function PaymentDetail({ user }: PaymentDetailProps) {
   const { isLoading, payTransaction } = useTransaction({ user });
 
   return (
-    <div className="flex flex-col gap-[30px] w-[400px]">
+    <div className="flex flex-col gap-[30px] w-full md:w-[400px]">
       <div className="flex flex-col gap-[18px]">
         <p className="font-semibold">Payment Details</p>
         <div className="flex justify-between">
@@ -56,7 +56,7 @@ export default function PaymentDetail({ user }: PaymentDetailProps) {
         type="button"
         onClick={payTransaction}
         disabled={isLoading}
-        className="font-bold text-flysha-black bg-flysha-light-purple rounded-full h-12 w-full transition-all duration-300 hover:shadow-[0_10px_20px_0_#B88DFF] flex justify-center items-center"
+        className="font-bold text-flysha-black bg-flysha-light-purple rounded-full h-12 w-full transition-all duration-300 hover:shadow-[0_10px_20px_0_#B88DFF] flex justify-center items-center mb-5 md:mb-0"
       >
         Checkout with Midtrans
       </button>

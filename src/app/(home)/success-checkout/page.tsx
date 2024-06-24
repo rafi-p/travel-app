@@ -22,9 +22,9 @@ export default async function SuccessPage() {
         id="Content"
         className="container max-w-[1130px] mx-auto -mt-[103px] z-10 relative"
       >
-        <div className="checkout-container flex justify-center items-center gap-[100px]">
+        <div className="checkout-container flex flex-col md:flex-row justify-center items-center gap-10 md:gap-[100px]">
           <CheckoutCard user={user} />
-          <div className="flex flex-col gap-[42px] w-fit">
+          <div className="flex flex-col gap-[42px] w-fit mb-5 md:mb-0">
             <h1 className="font-bold text-[32px] leading-[48px]">
               Success Checkout. <br />
               Enjoy Your Best Flight.

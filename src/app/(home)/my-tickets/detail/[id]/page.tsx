@@ -25,15 +25,15 @@ export default async function DetailTicketPage({ params }: DetailTicketProps) {
       >
         <div className="Header-content bg-gradient-to-r from-[#080318] to-[rgba(8,3,24,0)] h-[290px]">
           <Navbar />
-          <div className="title container max-w-[1130px] mx-auto flex gap-[30px] pt-[50px] pb-[68px]">
-            <p className="flex items-center gap-[30px] font-medium text-lg">
+          <div className="title container max-w-[1130px] mx-auto flex gap-5 md:gap-[30px] pt-[50px] pb-8 md:pb-[68px]">
+            <p className="flex items-center gap-5 md:gap-[30px] font-medium text-sm md:text-lg text-nowrap">
               My Tickets<span>/</span>Details<span>/</span>
             </p>
-            <div className="flex flex-col gap-1">
-              <h1 className="font-bold text-[32px] leading-[48px]">
+            <div className="flex flex-col md:gap-1">
+              <h1 className="font-bold text-lg md:text-[32px] md:leading-[48px]">
                 {data?.flight.departureCity} to {data?.flight.destinationCity}
               </h1>
-              <p className="font-medium text-lg leading-[27px]">
+              <p className="font-medium text-sm md:text-lg leading-[27px]">
                 {data && dateFormat(data.bookingDate, "DD MMM YYYY")}
               </p>
             </div>
@@ -45,7 +45,7 @@ export default async function DetailTicketPage({ params }: DetailTicketProps) {
         id="Content"
         className="container max-w-[1130px] mx-auto -mt-[33px] z-10 relative"
       >
-        <div className="checkout-container flex-col lg:flex-row flex gap-[70px]">
+        <div className="checkout-container flex-col lg:flex-row flex gap-5 md:gap-[70px]">
           {data && <FlightDetail data={data} />}
           <div className="flex flex-col mt-[63px] gap-[30px]">
             <Benefits />
