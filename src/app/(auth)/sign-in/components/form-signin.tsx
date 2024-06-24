@@ -31,7 +31,7 @@ export default function FormSignIn() {
   return (
     <form
       action={formAction}
-      className="bg-white text-flysha-black w-[500px] flex flex-col rounded-[20px] gap-5 p-5"
+      className="bg-white text-flysha-black md:w-[500px] flex flex-col rounded-[20px] gap-5 p-5"
     >
       {state.errorTitle && (
         <div className="bg-red-500 w-full p-4 rounded-lg text-white">
